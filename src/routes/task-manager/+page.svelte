@@ -1,5 +1,6 @@
-<script>
+<script lang="ts">
 	import TaskList from '../../components/TaskList.svelte';
+	import { data } from '../../lib/taskData';
 </script>
 
 <div class="p-10 h-full">
@@ -9,9 +10,9 @@
 	</button>
 	<div class="flex-it h-full">
 		<div class="flex-it flex-row rounded-xl h-full">
-			<TaskList />
-			<TaskList />
-			<TaskList />
+			{#each data as taskList}
+				<TaskList title={taskList.text} tasks={taskList.items} />
+			{/each}
 		</div>
 	</div>
 </div>
